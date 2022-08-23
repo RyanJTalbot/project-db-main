@@ -1,37 +1,40 @@
 // Server
 
 // Requirements
-const express = require("express");
-const mongoose = require("mongoose");
-const Router = require("./routes");
+require('dotenv').config();
+
+const express = require('express');
+const mongoose = require('mongoose');
+
+// const connectDB = require('./config/db');
+// const Router = require('./routes/routes.js');
 
 // Set express to the variable app
 const app = express();
 
-app.use(express.json());
+// Routes
+const provider = require('./routes/provider');
 
+// connect database
 // Connection to our Database API (MongoDB)
 mongoose.connect(
-    "mongodb+srv://database:qwerty12345@cluster-db.zqzv6.mongodb.net/?retryWrites=true&w=majority",
-    {
-        useNewUrlParser: true,
-        // useFindandModify causing errors
-        // useFindAndModify: false,
-        useUnifiedTopology: true,
-    }
+	'mongodb+srv://database:qwerty12345@cluster-db.zqzv6.mongodb.net/?retryWrites=true&w=majority',
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	},
 );
 
-// Connection to database - Error Messages and Successfully
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", function () {
-    console.log("Connected successfully");
-});
+// Initialize middleware
+app.use(express.json({ extended: false }));
+app.get('/', (req, res) => res.send('connection successful'));
 
-// Connecting Express to our Router
-app.use(Router);
+// Use Routes
+app.use('/provider', provider);
 
-// Setting the Port to 3000
-app.listen(3000, () => {
-    console.log("Server is running at port 3000");
+// Setting up port
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+	console.log(`Server is running on port ${PORT}`);
 });
