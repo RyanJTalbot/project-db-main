@@ -1,5 +1,6 @@
 const Provider = require('../models/providerModel');
 
+// get all providers
 exports.getAllProvider = (req, res) => {
 	Provider.find()
 		.then((provider) => res.json(provider))
@@ -9,3 +10,9 @@ exports.getAllProvider = (req, res) => {
 				.json({ message: 'Provider not found', error: err.message }),
 		);
 };
+
+// // get provider by zip code
+// exports.getProviderZip = (req, res) => {
+// 	Provide.find()
+//         .then((provider) => res.json(provider))
+// };
