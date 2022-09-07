@@ -11,8 +11,13 @@ exports.getAllProvider = (req, res) => {
 		);
 };
 
-// // get provider by zip code
-// exports.getProviderZip = (req, res) => {
-// 	Provide.find()
-//         .then((provider) => res.json(provider))
-// };
+// get provider by zip code
+exports.getProviderZip = (req, res) => {
+	Provider.find({ zip: '70816' })
+		.then((provider) => res.json(provider))
+		.catch((err) =>
+			res
+				.status(404)
+				.json({ message: 'Zip Code not found', error: err.message }),
+		);
+};
