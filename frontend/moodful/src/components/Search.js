@@ -43,7 +43,9 @@ function Search() {
 	return (
 		<section>
 			<div class='container'>
-				<h4 className='mb-3 text-center mt-4'>Search Providers by Zip</h4>
+				<h4 className='mb-3 text-center mt-4'>
+					Baton Rouge Mental Health Providers
+				</h4>
 				<div class='row mt-3'>
 					<div class='col-sm-11'>
 						<div class='input-group mb-4 mt-3'>
@@ -55,7 +57,7 @@ function Search() {
 									onKeyUp={searchRecords}
 									onChange={(e) => setSearch(e.target.value)}
 									class='form-control'
-									placeholder='Search Employee Here'
+									placeholder='Search by Zip'
 									style={{ backgroundColor: '#ececec' }}
 								/>
 							</div>

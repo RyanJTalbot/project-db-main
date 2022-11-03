@@ -6,3 +6,9 @@ then run `npm start`
 in a new terminal cd to `frontend/moodful` with `cd frontend` then `cd moodful`
 in the terminal you might have to type `npm i` again
 followed by `npm start`
+
+---
+
+when wanting to start app after running the above setup. cd into frontend and moodful and type npm start
+
+in a new terminal; in the root folder type npm start
