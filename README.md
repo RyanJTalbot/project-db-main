@@ -12,3 +12,5 @@ followed by `npm start`
 when wanting to start app after running the above setup. cd into frontend and moodful and type npm start
 
 in a new terminal; in the root folder type npm start
+
+backend can be viewed at localhost:8000/provider
