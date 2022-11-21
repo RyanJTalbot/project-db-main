@@ -1,8 +1,7 @@
 import React from 'react';
-// import Searchbar from '../components/Searchbar';
-// import Search from '../components/Search';
-import background from '../img/1-color-hex-1.jpg';
-import Search from '../components/NewSearch';
+import Search from '../components/Search';
+import background from '../img/bground.jpg';
+// import Search from '../components/NewSearch';
 
 class FcardPage extends React.Component {
 	render() {

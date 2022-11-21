@@ -42,21 +42,21 @@ function Search() {
 
 	return (
 		<section>
-			<div class='container'>
+			<div className='container'>
 				<h4 className='mb-3 text-center mt-4'>
 					Baton Rouge Mental Health Providers
 				</h4>
-				<div class='row mt-3'>
-					<div class='col-sm-11'>
-						<div class='input-group mb-4 mt-3'>
-							<div class='form-outline'>
+				<div className='row mt-3'>
+					<div className='col-sm-11'>
+						<div className='input-group mb-4 mt-3'>
+							<div className='form-outline'>
 								<input
 									type='text'
 									id='form1'
 									// onKeyDown={loadRecordAgain}
 									onKeyUp={searchRecords}
 									onChange={(e) => setSearch(e.target.value)}
-									class='form-control'
+									className='form-control'
 									placeholder='Search by Zip'
 									style={{ backgroundColor: '#ececec' }}
 								/>
@@ -65,7 +65,7 @@ function Search() {
             <i class="fa fa-search" aria-hidden="true"></i>
         </button> */}
 						</div>
-						<table class='table table-hover  table-striped table-bordered ml-4 '>
+						<table className='table table-hover  table-striped table-bordered ml-4 '>
 							<thead>
 								<tr>
 									<th>Company</th>
@@ -77,6 +77,7 @@ function Search() {
 								</tr>
 							</thead>
 							<tbody>
+								{/* need a key value here */}
 								{record.map((name) => (
 									<tr>
 										<td>{name.Company}</td>

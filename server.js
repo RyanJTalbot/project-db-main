@@ -16,6 +16,7 @@ const app = express();
 
 // Routes
 const provider = require('./routes/provider');
+const { collection } = require('./models/providerModel');
 
 // connect database
 // Connection to our Database API (MongoDB)
@@ -42,6 +43,27 @@ app.use(bodyParser.json());
 app.use('/provider', provider);
 
 app.use('/zip', provider);
+
+// connect to search function
+app.use('/search', async (request, response) => {
+	try {
+		let result = await provider
+			.aggregate([
+				{
+					$search: {
+						autocomplete: {
+							query: `${request.query.term}`,
+							path: 'zip_code',
+						},
+					},
+				},
+			])
+			.toArray();
+		response.send(result);
+	} catch (e) {
+		response.status(500).send({ message: e.message });
+	}
+});
 
 // Setting up port
 const PORT = process.env.PORT || 8000;
