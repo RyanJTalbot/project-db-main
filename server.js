@@ -8,9 +8,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-// const connectDB = require('./config/db');
-// const Router = require('./routes/routes.js');
-
 // Set express to the variable app
 const app = express();
 
@@ -31,10 +28,6 @@ mongoose.connect(
 // Use Cors
 app.use(cors());
 
-// // Initialize middleware
-// app.use(express.json({ extended: false }));
-// app.get('/', (req, res) => res.send('connection successful'));
-
 // Parse the body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -45,7 +38,7 @@ app.use('/provider', provider);
 app.use('/zip', provider);
 
 // connect to search function
-app.use('/search', async (request, response) => {
+app.use('/zip', async (request, response) => {
 	try {
 		let result = await provider
 			.aggregate([
