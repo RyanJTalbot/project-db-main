@@ -22,8 +22,8 @@ function Search() {
 
 	// Search Records here
 	const searchRecords = () => {
-		axios.get(`http://localhost:8000/provider/${search}`).then((response) => {
-			setRecord(response.data);
+		axios.get(`http://localhost:8000/provider/${search}`).then((responses) => {
+			setRecord(responses.data);
 		});
 	};
 
@@ -53,9 +53,17 @@ function Search() {
 								<input
 									type='text'
 									id='form1'
-									// onKeyDown={loadRecordAgain}
-									onKeyUp={searchRecords}
-									onChange={(e) => setSearch(e.target.value)}
+									// onKeyDown={searchRecords}
+									// onKeyUp={searchRecords}
+									onChange={(event) => {
+										this.setSearch({ query: event.target.value });
+									}}
+									onKeyPress={(event) => {
+										if (event.key === 'Enter') {
+											this.searchRecords();
+										}
+									}}
+									// onChange={(e) => setSearch(e.target.value)}
 									className='form-control'
 									placeholder='Search by Zip'
 									style={{ backgroundColor: '#ececec' }}

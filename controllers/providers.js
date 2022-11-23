@@ -12,7 +12,7 @@ exports.getAllProvider = (req, res) => {
 };
 
 // query providers by zip
-const query = { zip: 70816 };
+const query = { zip: '70816' };
 
 const cursor = Provider.find(query);
 

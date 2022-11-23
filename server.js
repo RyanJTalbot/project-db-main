@@ -13,7 +13,6 @@ const app = express();
 
 // Routes
 const provider = require('./routes/provider');
-const { collection } = require('./models/providerModel');
 
 // connect database
 // Connection to our Database API (MongoDB)
@@ -24,6 +23,15 @@ mongoose.connect(
 		useUnifiedTopology: true,
 	},
 );
+
+// // New db with strings instead of numbers for zip
+// mongoose.connect(
+// 	'mongodb+srv://Admin:qwerty12345@clusterwrk.ajpx6us.mongodb.net/?retryWrites=true&w=majority',
+// 	{
+// 		useNewUrlParser: true,
+// 		useUnifiedTopology: true,
+// 	},
+// );
 
 // Use Cors
 app.use(cors());
