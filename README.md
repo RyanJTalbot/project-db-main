@@ -14,3 +14,5 @@ when wanting to start app after running the above setup. cd into frontend and mo
 in a new terminal; in the root folder type npm start
 
 backend can be viewed at localhost:8000/provider
+
+look into Manticore Search
