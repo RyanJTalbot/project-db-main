@@ -16,3 +16,4 @@ in a new terminal; in the root folder type npm start
 backend can be viewed at localhost:8000/provider
 
 look into Manticore Search
+https://manticoresearch.com/install/
