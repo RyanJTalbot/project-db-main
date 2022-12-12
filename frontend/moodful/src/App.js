@@ -6,7 +6,7 @@ function App() {
 	return (
 		// <div style={{ backgroundImage: `url(${background})` }}>
 		<div className='App'>
-			<h1>MOODFUL</h1>
+			<h1 className='header'>MOODFUL</h1>
 			<HomePage />
 		</div>
 		// </div>

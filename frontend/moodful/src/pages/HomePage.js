@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from '../components/Search';
-import background from '../img/bground.jpg';
+import background from '../img/bground_magic.jpg';
 // import Search from '../components/NewSearch';
 
 class FcardPage extends React.Component {
