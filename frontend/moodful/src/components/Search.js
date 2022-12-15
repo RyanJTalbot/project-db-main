@@ -1,6 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+// import LoadingButton from './Button';
+import * as mdb from 'mdb-ui-kit'; // lib
+import { Input } from 'mdb-ui-kit'; // module
 
 function Search() {
 	const [search, setSearch] = useState('');
@@ -23,22 +26,9 @@ function Search() {
 	// Search Records here
 	const searchRecords = () => {
 		axios.get(`http://localhost:8000/provider/${search}`).then((responses) => {
-			setRecord(responses.data);
+			setSearch(responses.data);
 		});
 	};
-
-	// const loadRecordAgain = () => {
-	// 	var response = fetch('http://localhost:8000/provider')
-	// 		.then(function (response) {
-	// 			return response.json();
-	// 		})
-	// 		.then(function (myJson) {
-	// 			setRecord(myJson);
-	// 		});
-	// };
-	// useEffect(() => {
-	// 	loadRecordAgain();
-	// }, []);
 
 	return (
 		<section>
@@ -46,10 +36,22 @@ function Search() {
 				<h4 className='mb-3 text-center mt-4'>
 					Baton Rouge Mental Health Providers
 				</h4>
+				<div class='input-group'>
+					<input
+						type='search'
+						class='form-control rounded'
+						placeholder='Search by Zip'
+						aria-label='Search'
+						aria-describedby='search-addon'
+					/>
+					<button type='button' class='btn btn-outline-primary'>
+						search
+					</button>
+				</div>
 				<div className='row mt-3'>
 					<div className='col-sm-11'>
 						<div className='input-group mb-4 mt-3'>
-							<div className='form-outline'>
+							{/* <div className='form-outline'>
 								<input
 									type='text'
 									id='form1'
@@ -58,20 +60,21 @@ function Search() {
 									onChange={(event) => {
 										this.setSearch({ query: event.target.value });
 									}}
-									onKeyPress={(event) => {
-										if (event.key === 'Enter') {
-											this.searchRecords();
-										}
-									}}
+									// onKeyPress={(event) => {
+									// 	if (event.key === 'Enter') {
+									// 		this.searchRecords();
+									// 	}
+									// }}
 									// onChange={(e) => setSearch(e.target.value)}
 									className='form-control'
 									placeholder='Search by Zip'
 									style={{ backgroundColor: '#ececec' }}
 								/>
-							</div>
+								LoadingButton
+							</div> */}
 							{/* <button type="button" onClick={searchRecords}  class="btn btn-success">
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </button> */}
+		    <i class="fa fa-search" aria-hidden="true"></i>
+		</button> */}
 						</div>
 						<table className='table table-hover  table-striped table-bordered ml-4 '>
 							<thead>
@@ -86,6 +89,7 @@ function Search() {
 							</thead>
 							<tbody>
 								{/* need a key value here */}
+
 								{record.map((name) => (
 									<tr>
 										<td>{name.Company}</td>

@@ -14,13 +14,13 @@ exports.getAllProvider = (req, res) => {
 // query providers by zip
 const query = { zip: '70816' };
 
-const cursor = Provider.find('/_id');
+const cursor = Provider.find('/zip');
 
 // get provider by zip code
 exports.getProviderZip = (req, res) => {
-	Provider.find({ zip: 70816 })
+	Provider.find()
 		// cursor()
-		.then((provider) => res.json(provider))
+		.then((cursor) => res.json(cursor))
 		.catch((err) =>
 			res
 				.status(404)
