@@ -6,7 +6,7 @@ import * as mdb from 'mdb-ui-kit'; // lib
 import { Input } from 'mdb-ui-kit'; // module
 
 function Search() {
-	const [search, setSearch] = useState('');
+	const [search, setSearch] = useState([]);
 	const [record, setRecord] = useState([]);
 
 	// On Page load display all records
@@ -25,10 +25,20 @@ function Search() {
 
 	// Search Records here
 	const searchRecords = () => {
-		axios.get(`http://localhost:8000/provider/${search}`).then((responses) => {
+		axios.get('http://localhost:8000/provider/zip').then((responses) => {
 			setSearch(responses.data);
 		});
 	};
+
+	// random number generator
+	function getRandomInt(max) {
+		return Math.floor(Math.random() * max);
+	}
+
+	// random number saved to var num
+	var num = getRandomInt(9999);
+
+	//
 
 	return (
 		<section>
@@ -36,46 +46,21 @@ function Search() {
 				<h4 className='mb-3 text-center mt-4'>
 					Baton Rouge Mental Health Providers
 				</h4>
-				<div class='input-group'>
+				<div className='input-group'>
 					<input
 						type='search'
-						class='form-control rounded'
+						className='form-control rounded'
 						placeholder='Search by Zip'
 						aria-label='Search'
 						aria-describedby='search-addon'
 					/>
-					<button type='button' class='btn btn-outline-primary'>
+					<button type='button' className='btn btn-outline-primary'>
 						search
 					</button>
 				</div>
 				<div className='row mt-3'>
 					<div className='col-sm-11'>
-						<div className='input-group mb-4 mt-3'>
-							{/* <div className='form-outline'>
-								<input
-									type='text'
-									id='form1'
-									// onKeyDown={searchRecords}
-									// onKeyUp={searchRecords}
-									onChange={(event) => {
-										this.setSearch({ query: event.target.value });
-									}}
-									// onKeyPress={(event) => {
-									// 	if (event.key === 'Enter') {
-									// 		this.searchRecords();
-									// 	}
-									// }}
-									// onChange={(e) => setSearch(e.target.value)}
-									className='form-control'
-									placeholder='Search by Zip'
-									style={{ backgroundColor: '#ececec' }}
-								/>
-								LoadingButton
-							</div> */}
-							{/* <button type="button" onClick={searchRecords}  class="btn btn-success">
-		    <i class="fa fa-search" aria-hidden="true"></i>
-		</button> */}
-						</div>
+						<div className='input-group mb-4 mt-3'></div>
 						<table className='table table-hover  table-striped table-bordered ml-4 '>
 							<thead>
 								<tr>
@@ -88,10 +73,10 @@ function Search() {
 								</tr>
 							</thead>
 							<tbody>
-								{/* need a key value here */}
+								{/* need a key value here used random number from the above const variable, num */}
 
-								{record.map((name) => (
-									<tr>
+								{record.map((name, num) => (
+									<tr key={num}>
 										<td>{name.Company}</td>
 										<td>{name.Address}</td>
 										<td>{name.City}</td>

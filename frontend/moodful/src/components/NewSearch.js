@@ -1,57 +1,47 @@
-import { BsSearch } from 'react-icons/bs';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import initialDetails from '../components/initialDetails';
 
-export default function Search() {
-	const [searchResult, setSearchResult] = useState([]);
-	const [key, setKey] = useState('');
+const Search = () => {
+	const providers = { initialDetails };
 
-	useEffect(() => {
-		const search = async () => {
-			try {
-				if (!key.trim()) {
-					setSearchResult([]);
-					return;
-				}
-				const res = await axios.get('http://localhost:8000/search', {
-					params: { key: key, limit: 5 },
-				});
-				setSearchResult(res.data.data);
-				console.log(res);
-			} catch (error) {
-				console.log(error);
-			}
-		};
-	}, []);
+	const [searchInput, setSearchInput] = useState('');
+
+	const handleChange = (e) => {
+		e.preventDefault();
+		setSearchInput(e.target.value);
+	};
+
+	if (searchInput.length > 0) {
+		providers.filter((provider) => {
+			return provider.name.match(searchInput);
+		});
+	}
 	return (
-		<form>
-			<div className='search-wrapper'>
-				<button className='search-btn'>
-					{' '}
-					<BsSearch />{' '}
-				</button>
-				<div className='form-group'>
-					<input
-						type='text'
-						className='form-control'
-						placeholder='Searching...'
-						value={key}
-						onChange={(e) => setKey(e.target.value)}
-					/>
-				</div>
-				{searchResult && searchResult.length > 0 && (
-					<div className='search-result'>
-						{searchResult.map((zip) => (
-							<div className='zip-info'>
-								<p className='name'>{zip.Company}</p>
-								<p>{zip.Company.Address}</p>
-							</div>
-						))}
-					</div>
-				)}
-			</div>
-		</form>
-	);
-}
+		<div>
+			<input
+				type='search'
+				placeholder='Search here'
+				onChange={handleChange}
+				value={searchInput}
+			/>
 
-// https://www.youtube.com/watch?v=OwqkFjXG_sI
+			<table>
+				<tr>
+					<th>Country</th>
+					<th>Continent</th>
+				</tr>
+
+				{providers.map((provider) => {
+					<div>
+						<tr>
+							<td>{provider.name}</td>
+							<td>{provider.zip}</td>
+						</tr>
+					</div>;
+				})}
+			</table>
+		</div>
+	);
+};
+
+export default Search;

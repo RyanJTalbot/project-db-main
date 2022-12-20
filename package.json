@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/lab": "^4.0.0-alpha.61",
     "async": "^3.2.4",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",

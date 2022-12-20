@@ -1,45 +1,54 @@
-import React, { useState } from 'react';
-import Scroll from './Scroll';
-import SearchList from './SearchList';
+// import React, { useState } from 'react';
+// import Scroll from './Scroll';
+// import SearchList from './SearchList';
 
-function Search({ details }) {
-	const [searchField, setSearchField] = useState('');
+// function Search({ details }) {
+// 	const [searchField, setSearchField] = useState('');
+// 	const [searchShow, setSearchShow] = useState(false);
 
-	const filteredPersons = details.filter((person) => {
-		return (
-			person.Company.toLowerCase().includes(searchField.toLowerCase()) ||
-			person.zip.includes(searchField())
-		);
-	});
+// 	const filteredPersons = details.filter((person) => {
+// 		return (
+// 			person.Company.toLowerCase().includes(searchField.toLowerCase()) ||
+// 			person.zip.includes(searchField())
+// 		);
+// 	});
 
-	const handleChange = (e) => {
-		setSearchField(e.target.value);
-	};
+// 	const handleChange = (e) => {
+// 		setSearchField(e.target.value);
 
-	function searchList() {
-		return (
-			<Scroll>
-				<SearchList filteredPersons={filteredPersons} />
-			</Scroll>
-		);
-	}
+// 		if (e.target.value === '') {
+// 			setSearchShow(false);
+// 		} else {
+// 			setSearchShow(true);
+// 		}
+// 	};
 
-	return (
-		<section className='garamond'>
-			<div className='navy georgia ma0 grow'>
-				<h2 className='f2'>Search for Provider</h2>
-			</div>
-			<div className='pa2'>
-				<input
-					className='pa3 bb br3 grow b--none bg-lightest-blue ma3'
-					type='search'
-					placeholder='Search Providers'
-					onChange={handleChange}
-				/>
-			</div>
-			{searchList()}
-		</section>
-	);
-}
+// 	function searchList() {
+// 		if (searchShow) {
+// 			return (
+// 				<Scroll>
+// 					<SearchList filteredPersons={filteredPersons} />
+// 				</Scroll>
+// 			);
+// 		}
+// 	}
 
-export default Search;
+// 	return (
+// 		<section className='garamond'>
+// 			<div className='navy georgia ma0 grow'>
+// 				<h2 className='f2'>Search for Provider</h2>
+// 			</div>
+// 			<div className='pa2'>
+// 				<input
+// 					className='pa3 bb br3 grow b--none bg-lightest-blue ma3'
+// 					type='search'
+// 					placeholder='Search Providers'
+// 					onChange={handleChange}
+// 				/>
+// 			</div>
+// 			{searchList()}
+// 		</section>
+// 	);
+// }
+
+// export default Search;

@@ -1,11 +1,12 @@
 import React from 'react';
-// import Search from '../components/Search';
+import Search from '../components/Search';
 import background from '../img/bground_magic.jpg';
 // import Search from '../components/NewSearch';
 // import Providers from '../components/Providers';
+import LSearch from '../components/LinkedinSearch';
 
-import Search from '../components/new/Search';
-import initialDetails from '../components/new/initialDetails';
+// import Search from '../components/new/Search';
+// import initialDetails from '../components/initialDetails';
 
 class FcardPage extends React.Component {
 	render() {
@@ -15,11 +16,13 @@ class FcardPage extends React.Component {
 					backgroundImage: `url(${background})`,
 				}}
 			>
-				<div className='card-page'>
-					{/* <Search />
-					<Providers /> */}
-					<Search details={initialDetails} />
-				</div>
+				{/* <div className='card-page'>
+					<Search />
+					<Providers />
+				</div> */}
+
+				<Search />
+				{/* <LSearch /> */}
 			</div>
 		);
 	}
