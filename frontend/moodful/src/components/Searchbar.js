@@ -1,45 +1,40 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import SearchBar from './SearchBar';
+import CountryList from './CountryList';
 
-// import Button from 'react-bootstrap/Button';
-// import Container from 'react-bootstrap/Container';
-// import Form from 'react-bootstrap/Form';
-// import Navbar from 'react-bootstrap/Navbar';
-// import axios from 'axios';
+const SearchPage = (props) => {
+	const [input, setInput] = useState('');
+	const [countryListDefault, setCountryListDefault] = useState();
+	const [countryList, setCountryList] = useState();
 
-// export default function Searchbar() {
-// 	// usestate hooks
-// 	const [zip, setZip] = useState([]);
+	const fetchData = async () => {
+		return await fetch('http://localhost:8000/provider')
+			.then((response) => response.json())
+			.then((data) => {
+				setCountryList(data);
+				setCountryListDefault(data);
+			});
+	};
 
-// 	const getZip = async () => {
-// 		try {
-// 			const zipCodes = await axios.get('http of backend');
+	const updateInput = async (input) => {
+		const filtered = countryListDefault.filter((country) => {
+			return country.name.toLowerCase().includes(input.toLowerCase());
+		});
+		setInput(input);
+		setCountryList(filtered);
+	};
 
-// 			// Set Data
-// 			setZip(zipCodes.data);
-// 		} catch (err) {
-// 			console.error(err.message);
-// 		}
-// 	};
+	useEffect(() => {
+		fetchData();
+	}, []);
 
-// 	useEffect(() => {
-// 		getZip();
-// 	}, []);
+	return (
+		<>
+			<h1>Country List</h1>
+			<SearchBar input={input} onChange={updateInput} />
+			<CountryList countryList={countryList} />
+		</>
+	);
+};
 
-// 	return (
-// 		<>
-// 			<Navbar bg='light' expand='lg'>
-// 				<Container fluid>
-// 					<Form className='d-flex'>
-// 						<Form.Control
-// 							type='search'
-// 							placeholder='Search'
-// 							className='me-2'
-// 							aria-label='Search'
-// 						/>
-// 						<Button variant='outline-success'>Search</Button>
-// 					</Form>
-// 				</Container>
-// 			</Navbar>
-// 		</>
-// 	);
-// }
+export default SearchPage;
