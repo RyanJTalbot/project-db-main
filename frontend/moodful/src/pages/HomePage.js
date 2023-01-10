@@ -3,8 +3,6 @@ import Search from '../components/Search';
 import background from '../img/bground_magic.jpg';
 // import Search from '../components/NewSearch';
 // import Providers from '../components/Providers';
-import LSearch from '../components/LinkedinSearch';
-import SearchPage from '../components/Searchbar';
 
 // import Search from '../components/new/Search';
 // import initialDetails from '../components/initialDetails';
@@ -22,9 +20,7 @@ class FcardPage extends React.Component {
 					<Providers />
 				</div> */}
 
-				{/* <Search /> */}
-				<SearchPage />
-				{/* <LSearch /> */}
+				<Search />
 			</div>
 		);
 	}
