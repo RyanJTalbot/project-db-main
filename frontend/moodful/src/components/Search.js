@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 // import LoadingButton from './Button';
 import * as mdb from 'mdb-ui-kit'; // lib
@@ -8,6 +8,7 @@ import { Input } from 'mdb-ui-kit'; // module
 function Search() {
 	const [search, setSearch] = useState([]);
 	const [record, setRecord] = useState([]);
+	const searchRef = useRef();
 
 	// On Page load display all records
 	const loadProviderDetails = async () => {
@@ -25,9 +26,16 @@ function Search() {
 
 	// Search Records here
 	const searchRecords = () => {
-		axios.get('http://localhost:8000/provider/zip').then((responses) => {
-			setSearch(responses.data);
-		});
+		const zip = searchRef.current.value;
+		if (!zip) {
+			loadProviderDetails();
+			return;
+		}
+		axios
+			.get(`http://localhost:8000/provider/zip?zip=${zip}`)
+			.then((responses) => {
+				setRecord(responses.data);
+			});
 	};
 
 	// random number generator
@@ -53,8 +61,13 @@ function Search() {
 						placeholder='Search by Zip'
 						aria-label='Search'
 						aria-describedby='search-addon'
+						ref={searchRef}
 					/>
-					<button type='button' className='btn btn-outline-primary'>
+					<button
+						type='button'
+						className='btn btn-outline-primary'
+						onClick={searchRecords}
+					>
 						search
 					</button>
 				</div>

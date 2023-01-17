@@ -18,7 +18,7 @@ const ProviderSchema = new mongoose.Schema({
 		type: String,
 		// required: true,
 	},
-	zip_code: {
+	zip: {
 		type: Number,
 		// required: true,
 	},
