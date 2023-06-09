@@ -22,3 +22,12 @@ errors are:
 cannot read properties of undefined (reading 'setSearch')
 
 cannot read properties of undefined (reading 'searchRecords')
+
+
+https://wiki.illinois.edu/wiki/display/cs512/Home
+https://github.com/Stability-AI/StableStudio
+
+https://github.com/MeisamYSF/COVID19-capstone-project/blob/main/covid19_analysis_part2.pdf
+https://github.com/J-will-code?tab=repositories
+https://pyimagesearch.com/
+https://data-flair.training/blogs/python-deep-learning-project-handwritten-digit-recognition/
